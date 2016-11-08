@@ -1,0 +1,640 @@
+CREATE  DATABASE LED
+
+USE [LED]
+GO
+/****** Object:  Table [dbo].[TipoDoc]    Script Date: 11/05/2016 19:20:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TipoDoc](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[descripcion] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[TipoDoc] ON
+INSERT [dbo].[TipoDoc] ([id], [descripcion]) VALUES (1, N'DNI')
+INSERT [dbo].[TipoDoc] ([id], [descripcion]) VALUES (2, N'Pasaporte')
+INSERT [dbo].[TipoDoc] ([id], [descripcion]) VALUES (3, N'Cedula')
+SET IDENTITY_INSERT [dbo].[TipoDoc] OFF
+/****** Object:  Table [dbo].[Tarjetas]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE TABLE [dbo].[Tarjetas](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[tipo] [varchar](30) NOT NULL,
+	[descripcion] [varchar](30) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Tarjetas] ON
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (1, N'Credito', N'Visa')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (2, N'Credito', N'MasterCard')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (3, N'Credito', N'Credencial')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (4, N'Credito', N'Cabal')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (5, N'Credito', N'American Express')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (6, N'Credito', N'Naranja')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (7, N'Credito', N'Cordobesa')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (8, N'Debito', N'Visa')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (9, N'Debito', N'MasterCard')
+INSERT [dbo].[Tarjetas] ([id], [tipo], [descripcion]) VALUES (10, N'Debito', N'Bancor')
+SET IDENTITY_INSERT [dbo].[Tarjetas] OFF
+/****** Object:  Table [dbo].[Colectivos]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Colectivos](
+	[patente] [varchar](39) NOT NULL,
+	[marca] [varchar](30) NULL,
+	[año] [int] NULL,
+	[cantAsientos] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[patente] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT [dbo].[Colectivos] ([patente], [marca], [año], [cantAsientos]) VALUES (N'DJS 454', N'Mercedes Venz', 2010, 55)
+INSERT [dbo].[Colectivos] ([patente], [marca], [año], [cantAsientos]) VALUES (N'DKK 852', N'Mercedes Venz', 2000, 55)
+INSERT [dbo].[Colectivos] ([patente], [marca], [año], [cantAsientos]) VALUES (N'JKK 665', N'Mercedes Venz', 2005, 55)
+INSERT [dbo].[Colectivos] ([patente], [marca], [año], [cantAsientos]) VALUES (N'ODK 846', N'Mercedes Venz', 2008, 55)
+INSERT [dbo].[Colectivos] ([patente], [marca], [año], [cantAsientos]) VALUES (N'SSD 654', N'Mercedes Venz', 2007, 55)
+/****** Object:  Table [dbo].[Paises]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Paises](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](30) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Paises] ON
+INSERT [dbo].[Paises] ([id], [nombre]) VALUES (1, N'Argentina')
+SET IDENTITY_INSERT [dbo].[Paises] OFF
+/****** Object:  Table [dbo].[FormasDePago]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE TABLE [dbo].[FormasDePago](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[descripcion] [varchar](30) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[FormasDePago] ON
+INSERT [dbo].[FormasDePago] ([id], [descripcion]) VALUES (1, N'Efectivo')
+INSERT [dbo].[FormasDePago] ([id], [descripcion]) VALUES (2, N'Debito')
+INSERT [dbo].[FormasDePago] ([id], [descripcion]) VALUES (3, N'Credito')
+SET IDENTITY_INSERT [dbo].[FormasDePago] OFF
+/****** Object:  Table [dbo].[Sexo]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Sexo](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[descripcion] [varchar](30) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Sexo] ON
+INSERT [dbo].[Sexo] ([id], [descripcion]) VALUES (1, N'Femenino')
+INSERT [dbo].[Sexo] ([id], [descripcion]) VALUES (2, N'Masculino')
+SET IDENTITY_INSERT [dbo].[Sexo] OFF
+/****** Object:  Table [dbo].[Provincias]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Provincias](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](30) NULL,
+	[pais] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Provincias] ON
+INSERT [dbo].[Provincias] ([id], [nombre], [pais]) VALUES (1, N'Cordoba', 1)
+INSERT [dbo].[Provincias] ([id], [nombre], [pais]) VALUES (2, N'Buenos Aires', 1)
+INSERT [dbo].[Provincias] ([id], [nombre], [pais]) VALUES (3, N'Santa Fe', 1)
+INSERT [dbo].[Provincias] ([id], [nombre], [pais]) VALUES (4, N'Chaco', 1)
+INSERT [dbo].[Provincias] ([id], [nombre], [pais]) VALUES (5, N'Santiago del Estero', 1)
+SET IDENTITY_INSERT [dbo].[Provincias] OFF
+/****** Object:  Table [dbo].[Choferes]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Choferes](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombres] [varchar](40) NOT NULL,
+	[apellido] [varchar](40) NOT NULL,
+	[tipoDoc] [int] NOT NULL,
+	[doc] [varchar](30) NOT NULL,
+	[telefono] [varchar](30) NULL,
+	[sexo] [int] NOT NULL,
+	[fechaNac] [date] NOT NULL,
+	[existe] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Choferes] ON
+INSERT [dbo].[Choferes] ([id], [nombres], [apellido], [tipoDoc], [doc], [telefono], [sexo], [fechaNac], [existe]) VALUES (1, N'Raul', N'Montero', 1, N'34562512', N'154256125', 2, CAST(0x76210B00 AS Date), 1)
+INSERT [dbo].[Choferes] ([id], [nombres], [apellido], [tipoDoc], [doc], [telefono], [sexo], [fechaNac], [existe]) VALUES (2, N'Omar', N'Perez', 1, N'43325454', N'125452451', 2, CAST(0x8A200B00 AS Date), 1)
+INSERT [dbo].[Choferes] ([id], [nombres], [apellido], [tipoDoc], [doc], [telefono], [sexo], [fechaNac], [existe]) VALUES (3, N'Pedro', N'Laguna', 1, N'32412145', N'125456212', 2, CAST(0x8C200B00 AS Date), 1)
+INSERT [dbo].[Choferes] ([id], [nombres], [apellido], [tipoDoc], [doc], [telefono], [sexo], [fechaNac], [existe]) VALUES (4, N'Carlos', N'Monzon', 1, N'33542111', N'154215445', 2, CAST(0x1C220B00 AS Date), 1)
+INSERT [dbo].[Choferes] ([id], [nombres], [apellido], [tipoDoc], [doc], [telefono], [sexo], [fechaNac], [existe]) VALUES (5, N'Walter', N'Aguirre', 1, N'33542122', N'154456654', 2, CAST(0x43200B00 AS Date), 1)
+SET IDENTITY_INSERT [dbo].[Choferes] OFF
+/****** Object:  Table [dbo].[Clientes]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Clientes](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[tipoDoc] [int] NOT NULL,
+	[doc] [int] NOT NULL,
+	[nombres] [varchar](30) NOT NULL,
+	[apellido] [varchar](30) NOT NULL,
+	[sexo] [int] NOT NULL,
+	[fechaNac] [date] NOT NULL,
+	[telefono] [varchar](30) NULL,
+	[existe] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Clientes] ON
+INSERT [dbo].[Clientes] ([id], [tipoDoc], [doc], [nombres], [apellido], [sexo], [fechaNac], [telefono], [existe]) VALUES (1, 1, 38985954, N'Debora Aldana', N'Avram', 1, CAST(0xB81B0B00 AS Date), N'15203412', 1)
+INSERT [dbo].[Clientes] ([id], [tipoDoc], [doc], [nombres], [apellido], [sexo], [fechaNac], [telefono], [existe]) VALUES (3, 1, 33122454, N'Dardo Daniel', N'Padilla', 2, CAST(0x69160B00 AS Date), N'15245654', 1)
+INSERT [dbo].[Clientes] ([id], [tipoDoc], [doc], [nombres], [apellido], [sexo], [fechaNac], [telefono], [existe]) VALUES (4, 1, 33455455, N'Fiama Abigail', N'Bustamante', 1, CAST(0xE8230B00 AS Date), N'15745232', 1)
+INSERT [dbo].[Clientes] ([id], [tipoDoc], [doc], [nombres], [apellido], [sexo], [fechaNac], [telefono], [existe]) VALUES (5, 2, 45565445, N'Gaston Ezequiel', N'Arguello', 2, CAST(0x82260B00 AS Date), N'15444544', 1)
+INSERT [dbo].[Clientes] ([id], [tipoDoc], [doc], [nombres], [apellido], [sexo], [fechaNac], [telefono], [existe]) VALUES (6, 3, 25546554, N'Mauricio Daniel', N'Regondi', 2, CAST(0x1C220B00 AS Date), N'15422321', 1)
+INSERT [dbo].[Clientes] ([id], [tipoDoc], [doc], [nombres], [apellido], [sexo], [fechaNac], [telefono], [existe]) VALUES (7, 1, 45654454, N'Yvette Belinda', N'Regondi', 1, CAST(0xF5010B00 AS Date), N'11544547', 1)
+SET IDENTITY_INSERT [dbo].[Clientes] OFF
+/****** Object:  Table [dbo].[Ciudades]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE TABLE [dbo].[Ciudades](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](30) NULL,
+	[provincia] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Ciudades] ON
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (1, N'Carlos Paz', 1)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (2, N'Cosquin', 1)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (3, N'Rio Tercero', 1)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (4, N'La Plata', 2)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (5, N'Mar del Plata', 2)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (6, N'Quilmes', 2)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (7, N'Santa Fe', 3)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (8, N'Rosario', 3)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (9, N'San Justo', 3)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (10, N'Maipu', 4)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (11, N'Resistencia', 4)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (12, N'Bermejo', 4)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (13, N'Frias', 5)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (14, N'Banderas', 5)
+INSERT [dbo].[Ciudades] ([id], [nombre], [provincia]) VALUES (15, N'Pinto', 5)
+SET IDENTITY_INSERT [dbo].[Ciudades] OFF
+/****** Object:  Table [dbo].[Domicilios]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Domicilios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[calle] [varchar](30) NULL,
+	[numero] [int] NULL,
+	[barrio] [varchar](30) NULL,
+	[provincia] [int] NULL,
+	[ciudad] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Domicilios] ON
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (1, N'Las Magnolias', 456, N'Orfeo', 1, 1)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (2, N'Av. Colon', 422, N'Centro', 1, 2)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (3, N'San Martin', 64, N'La Paz', 1, 3)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (4, N'Av. Avellaneda', 95, N'Jose Ignacio', 2, 4)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (5, N'Belgrano', 66, N'Cofico', 2, 5)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (6, N'San Francisco', 211, N'Providencia', 2, 6)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (7, N'Rio Primero', 54, N'Montevideo', 3, 7)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (8, N'Dumesnil', 144, N'Las Palmas', 3, 8)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (9, N'Hualfin', 85, N'San Felipe', 3, 9)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (10, N'Chaco', 87, N'Las Flores', 4, 10)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (11, N'Sagrada Familia', 695, N'Los Pinos', 4, 11)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (12, N'Alvarado', 23, N'Los Cocos', 4, 12)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (13, N'Santo Tomas', 25, N'Las Lilas', 5, 13)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (14, N'Pastorutti', 95, N'Empalme', 5, 14)
+INSERT [dbo].[Domicilios] ([id], [calle], [numero], [barrio], [provincia], [ciudad]) VALUES (15, N'Bolivar', 21, N'Lirios', 5, 15)
+SET IDENTITY_INSERT [dbo].[Domicilios] OFF
+/****** Object:  Table [dbo].[Planificacion]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Planificacion](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[lugarOrigen] [int] NOT NULL,
+	[lugarDestino] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Planificacion] ON
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (2, 1, 4)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (4, 1, 5)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (7, 1, 3)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (8, 1, 8)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (9, 1, 15)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (10, 1, 7)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (13, 2, 4)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (14, 2, 6)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (15, 2, 11)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (16, 3, 4)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (17, 1, 10)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (18, 4, 6)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (19, 4, 2)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (20, 4, 7)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (21, 5, 7)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (22, 5, 2)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (23, 3, 9)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (24, 13, 14)
+INSERT [dbo].[Planificacion] ([id], [lugarOrigen], [lugarDestino]) VALUES (26, 13, 1)
+SET IDENTITY_INSERT [dbo].[Planificacion] OFF
+/****** Object:  Table [dbo].[Sucursales]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sucursales](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[lugar] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Sucursales] ON
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (1, 1)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (2, 2)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (3, 3)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (4, 4)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (5, 5)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (6, 6)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (7, 7)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (8, 8)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (9, 9)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (10, 10)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (11, 11)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (12, 12)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (13, 13)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (14, 14)
+INSERT [dbo].[Sucursales] ([id], [lugar]) VALUES (15, 15)
+SET IDENTITY_INSERT [dbo].[Sucursales] OFF
+/****** Object:  Table [dbo].[Ventas]    Script Date: 11/05/2016 19:20:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Ventas](
+	[nroFactura] [int] IDENTITY(1,1) NOT NULL,
+	[idCliente] [int] NOT NULL,
+	[lugarVenta] [int] NOT NULL,
+	[subtotal] [decimal](18, 0) NOT NULL,
+	[iva] [decimal](18, 0) NOT NULL,
+	[descuento] [decimal](18, 0) NULL,
+	[total] [decimal](18, 0) NOT NULL,
+	[valido] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[nroFactura] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DetallesPagos]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DetallesPagos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nroFactura] [int] NOT NULL,
+	[formaPago] [int] NOT NULL,
+	[marcaTarj] [int] NULL,
+	[nroTarj] [int] NULL,
+	[cantCuotas] [int] NULL,
+	[saldo] [decimal](18, 0) NOT NULL,
+	[nroAutorizacion] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Viajes]    Script Date: 11/05/2016 19:20:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE TABLE [dbo].[Viajes](
+	[idViaje] [int] IDENTITY(1,1) NOT NULL,
+	[planificacion] [int] NOT NULL,
+	[fecha_hs_partida] [datetime] NOT NULL,
+	[fecha_hs_llegada] [datetime] NOT NULL,
+	[precioViaje] [decimal](18, 0) NOT NULL,
+	[patente] [varchar](39) NULL,
+	[idChof1] [int] NOT NULL,
+	[idChof2] [int] NOT NULL,
+	[aDisponibles] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idViaje] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Viajes] ON
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (1, 2, CAST(0x0000A60A00000000 AS DateTime), CAST(0x0000A60C00000000 AS DateTime), CAST(354 AS Decimal(18, 0)), N'DJS 454', 1, 2, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (3, 4, CAST(0x00009F0600000000 AS DateTime), CAST(0x00009F0800000000 AS DateTime), CAST(452 AS Decimal(18, 0)), N'DKK 852', 2, 3, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (5, 7, CAST(0x0000A6BE00000000 AS DateTime), CAST(0x0000A6BF00000000 AS DateTime), CAST(122 AS Decimal(18, 0)), N'JKK 665', 3, 4, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (7, 8, CAST(0x0000A65600000000 AS DateTime), CAST(0x0000A65D00000000 AS DateTime), CAST(300 AS Decimal(18, 0)), N'DJS 454', 4, 5, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (12, 9, CAST(0x0000A60A00000000 AS DateTime), CAST(0x0000A60E00000000 AS DateTime), CAST(250 AS Decimal(18, 0)), N'JKK 665', 5, 1, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (15, 10, CAST(0x0000A68100000000 AS DateTime), CAST(0x0000A68500000000 AS DateTime), CAST(150 AS Decimal(18, 0)), N'DKK 852', 2, 4, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (16, 13, CAST(0x0000A5E900000000 AS DateTime), CAST(0x0000A5EE00000000 AS DateTime), CAST(250 AS Decimal(18, 0)), N'JKK 665', 2, 5, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (18, 14, CAST(0x0000A69E00000000 AS DateTime), CAST(0x0000A69F00000000 AS DateTime), CAST(700 AS Decimal(18, 0)), N'DJS 454', 3, 1, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (19, 15, CAST(0x0000A64700000000 AS DateTime), CAST(0x0000A65100000000 AS DateTime), CAST(466 AS Decimal(18, 0)), N'ODK 846', 3, 5, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (20, 16, CAST(0x0000A6D000000000 AS DateTime), CAST(0x0000A6D200000000 AS DateTime), CAST(380 AS Decimal(18, 0)), N'ODK 846', 4, 1, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (21, 17, CAST(0x0000A67400000000 AS DateTime), CAST(0x0000A67600000000 AS DateTime), CAST(456 AS Decimal(18, 0)), N'SSD 654', 4, 2, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (22, 18, CAST(0x0000A6C500000000 AS DateTime), CAST(0x0000A6C600000000 AS DateTime), CAST(475 AS Decimal(18, 0)), N'ODK 846', 5, 2, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (23, 19, CAST(0x0000A5BE00000000 AS DateTime), CAST(0x0000A5C300000000 AS DateTime), CAST(423 AS Decimal(18, 0)), N'SSD 654', 5, 3, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (24, 20, CAST(0x0000A66700000000 AS DateTime), CAST(0x0000A66800000000 AS DateTime), CAST(655 AS Decimal(18, 0)), N'SSD 654', 1, 2, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (25, 21, CAST(0x0000A5E600000000 AS DateTime), CAST(0x0000A5ED00000000 AS DateTime), CAST(122 AS Decimal(18, 0)), N'ODK 846', 2, 3, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (27, 22, CAST(0x0000A69F00000000 AS DateTime), CAST(0x0000A6A000000000 AS DateTime), CAST(664 AS Decimal(18, 0)), N'ODK 846', 3, 4, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (28, 23, CAST(0x0000A60800000000 AS DateTime), CAST(0x0000A1C200000000 AS DateTime), CAST(465 AS Decimal(18, 0)), N'SSD 654', 4, 5, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (29, 24, CAST(0x0000A6B100000000 AS DateTime), CAST(0x0000A6B300000000 AS DateTime), CAST(465 AS Decimal(18, 0)), N'SSD 654', 5, 1, 55)
+INSERT [dbo].[Viajes] ([idViaje], [planificacion], [fecha_hs_partida], [fecha_hs_llegada], [precioViaje], [patente], [idChof1], [idChof2], [aDisponibles]) VALUES (30, 26, CAST(0x0000A68600000000 AS DateTime), CAST(0x0000A68800000000 AS DateTime), CAST(985 AS Decimal(18, 0)), N'ODK 846', 2, 4, 55)
+SET IDENTITY_INSERT [dbo].[Viajes] OFF
+/****** Object:  Table [dbo].[Disponibilidad]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Disponibilidad](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[idViaje] [int] NOT NULL,
+	[asiento] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DetallesVentas]    Script Date: 11/05/2016 19:20:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DetallesVentas](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nroFactura] [int] NOT NULL,
+	[idViaje] [int] NOT NULL,
+	[precioUnitario] [decimal](18, 0) NOT NULL,
+	[nroAsiento] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  ForeignKey [choferes_sexo_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Choferes]  WITH CHECK ADD  CONSTRAINT [choferes_sexo_fk] FOREIGN KEY([sexo])
+REFERENCES [dbo].[Sexo] ([id])
+GO
+ALTER TABLE [dbo].[Choferes] CHECK CONSTRAINT [choferes_sexo_fk]
+GO
+/****** Object:  ForeignKey [choferes_tipoDoc_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Choferes]  WITH CHECK ADD  CONSTRAINT [choferes_tipoDoc_fk] FOREIGN KEY([tipoDoc])
+REFERENCES [dbo].[TipoDoc] ([id])
+GO
+ALTER TABLE [dbo].[Choferes] CHECK CONSTRAINT [choferes_tipoDoc_fk]
+GO
+/****** Object:  ForeignKey [Ciudades_provincia_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Ciudades]  WITH CHECK ADD  CONSTRAINT [Ciudades_provincia_fk] FOREIGN KEY([provincia])
+REFERENCES [dbo].[Provincias] ([id])
+GO
+ALTER TABLE [dbo].[Ciudades] CHECK CONSTRAINT [Ciudades_provincia_fk]
+GO
+/****** Object:  ForeignKey [clientes_sexo_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Clientes]  WITH CHECK ADD  CONSTRAINT [clientes_sexo_fk] FOREIGN KEY([sexo])
+REFERENCES [dbo].[Sexo] ([id])
+GO
+ALTER TABLE [dbo].[Clientes] CHECK CONSTRAINT [clientes_sexo_fk]
+GO
+/****** Object:  ForeignKey [clientes_tipoDoc_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Clientes]  WITH CHECK ADD  CONSTRAINT [clientes_tipoDoc_fk] FOREIGN KEY([tipoDoc])
+REFERENCES [dbo].[TipoDoc] ([id])
+GO
+ALTER TABLE [dbo].[Clientes] CHECK CONSTRAINT [clientes_tipoDoc_fk]
+GO
+/****** Object:  ForeignKey [DetallesPagos_formaPago_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[DetallesPagos]  WITH CHECK ADD  CONSTRAINT [DetallesPagos_formaPago_fk] FOREIGN KEY([formaPago])
+REFERENCES [dbo].[FormasDePago] ([id])
+GO
+ALTER TABLE [dbo].[DetallesPagos] CHECK CONSTRAINT [DetallesPagos_formaPago_fk]
+GO
+/****** Object:  ForeignKey [DetallesPagos_marcaTarj_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[DetallesPagos]  WITH CHECK ADD  CONSTRAINT [DetallesPagos_marcaTarj_fk] FOREIGN KEY([marcaTarj])
+REFERENCES [dbo].[Tarjetas] ([id])
+GO
+ALTER TABLE [dbo].[DetallesPagos] CHECK CONSTRAINT [DetallesPagos_marcaTarj_fk]
+GO
+/****** Object:  ForeignKey [DetallesPagos_nroFactura_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[DetallesPagos]  WITH CHECK ADD  CONSTRAINT [DetallesPagos_nroFactura_fk] FOREIGN KEY([nroFactura])
+REFERENCES [dbo].[Ventas] ([nroFactura])
+GO
+ALTER TABLE [dbo].[DetallesPagos] CHECK CONSTRAINT [DetallesPagos_nroFactura_fk]
+GO
+/****** Object:  ForeignKey [DetallesVentas_nroFactura_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[DetallesVentas]  WITH CHECK ADD  CONSTRAINT [DetallesVentas_nroFactura_fk] FOREIGN KEY([nroFactura])
+REFERENCES [dbo].[Ventas] ([nroFactura])
+GO
+ALTER TABLE [dbo].[DetallesVentas] CHECK CONSTRAINT [DetallesVentas_nroFactura_fk]
+GO
+/****** Object:  ForeignKey [DetallesVentas_viajes]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[DetallesVentas]  WITH CHECK ADD  CONSTRAINT [DetallesVentas_viajes] FOREIGN KEY([idViaje])
+REFERENCES [dbo].[Viajes] ([idViaje])
+GO
+ALTER TABLE [dbo].[DetallesVentas] CHECK CONSTRAINT [DetallesVentas_viajes]
+GO
+/****** Object:  ForeignKey [Disponabilidad_idViaje]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Disponibilidad]  WITH CHECK ADD  CONSTRAINT [Disponabilidad_idViaje] FOREIGN KEY([idViaje])
+REFERENCES [dbo].[Viajes] ([idViaje])
+GO
+ALTER TABLE [dbo].[Disponibilidad] CHECK CONSTRAINT [Disponabilidad_idViaje]
+GO
+/****** Object:  ForeignKey [Domicilios_ciudad_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Domicilios]  WITH CHECK ADD  CONSTRAINT [Domicilios_ciudad_fk] FOREIGN KEY([ciudad])
+REFERENCES [dbo].[Ciudades] ([id])
+GO
+ALTER TABLE [dbo].[Domicilios] CHECK CONSTRAINT [Domicilios_ciudad_fk]
+GO
+/****** Object:  ForeignKey [Domicilios_provincia_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Domicilios]  WITH CHECK ADD  CONSTRAINT [Domicilios_provincia_fk] FOREIGN KEY([provincia])
+REFERENCES [dbo].[Provincias] ([id])
+GO
+ALTER TABLE [dbo].[Domicilios] CHECK CONSTRAINT [Domicilios_provincia_fk]
+GO
+/****** Object:  ForeignKey [Planificacion_lugarDestino_FK]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Planificacion]  WITH CHECK ADD  CONSTRAINT [Planificacion_lugarDestino_FK] FOREIGN KEY([lugarDestino])
+REFERENCES [dbo].[Domicilios] ([id])
+GO
+ALTER TABLE [dbo].[Planificacion] CHECK CONSTRAINT [Planificacion_lugarDestino_FK]
+GO
+
+/****** Object:  ForeignKey [Planificacion_lugarOrigen_FK]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Planificacion]  WITH CHECK ADD  CONSTRAINT [Planificacion_lugarOrigen_FK] FOREIGN KEY([lugarOrigen])
+REFERENCES [dbo].[Domicilios] ([id])
+GO
+ALTER TABLE [dbo].[Planificacion] CHECK CONSTRAINT [Planificacion_lugarOrigen_FK]
+GO
+/****** Object:  ForeignKey [Provincias_pais_fk]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Provincias]  WITH CHECK ADD  CONSTRAINT [Provincias_pais_fk] FOREIGN KEY([pais])
+REFERENCES [dbo].[Paises] ([id])
+GO
+ALTER TABLE [dbo].[Provincias] CHECK CONSTRAINT [Provincias_pais_fk]
+GO
+/****** Object:  ForeignKey [Sucursales_lugar_FK]    Script Date: 11/05/2016 19:20:02 ******/
+ALTER TABLE [dbo].[Sucursales]  WITH CHECK ADD  CONSTRAINT [Sucursales_lugar_FK] FOREIGN KEY([lugar])
+REFERENCES [dbo].[Domicilios] ([id])
+GO
+ALTER TABLE [dbo].[Sucursales] CHECK CONSTRAINT [Sucursales_lugar_FK]
+GO
+/****** Object:  ForeignKey [ventas_idCliente_fk]    Script Date: 11/05/2016 19:20:03 ******/
+ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [ventas_idCliente_fk] FOREIGN KEY([idCliente])
+REFERENCES [dbo].[Clientes] ([id])
+GO
+ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [ventas_idCliente_fk]
+GO
+/****** Object:  ForeignKey [Ventas_lugarVenta_FK]    Script Date: 11/05/2016 19:20:03 ******/
+ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [Ventas_lugarVenta_FK] FOREIGN KEY([lugarVenta])
+REFERENCES [dbo].[Domicilios] ([id])
+GO
+ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [Ventas_lugarVenta_FK]
+GO
+/****** Object:  ForeignKey [Viajes_idChof1_fk]    Script Date: 11/05/2016 19:20:03 ******/
+ALTER TABLE [dbo].[Viajes]  WITH CHECK ADD  CONSTRAINT [Viajes_idChof1_fk] FOREIGN KEY([idChof1])
+REFERENCES [dbo].[Choferes] ([id])
+GO
+ALTER TABLE [dbo].[Viajes] CHECK CONSTRAINT [Viajes_idChof1_fk]
+GO
+/****** Object:  ForeignKey [Viajes_idChof2_fk]    Script Date: 11/05/2016 19:20:03 ******/
+ALTER TABLE [dbo].[Viajes]  WITH CHECK ADD  CONSTRAINT [Viajes_idChof2_fk] FOREIGN KEY([idChof2])
+REFERENCES [dbo].[Choferes] ([id])
+GO
+ALTER TABLE [dbo].[Viajes] CHECK CONSTRAINT [Viajes_idChof2_fk]
+GO
+/****** Object:  ForeignKey [Viajes_patente_FK]    Script Date: 11/05/2016 19:20:03 ******/
+ALTER TABLE [dbo].[Viajes]  WITH CHECK ADD  CONSTRAINT [Viajes_patente_FK] FOREIGN KEY([patente])
+REFERENCES [dbo].[Colectivos] ([patente])
+GO
+ALTER TABLE [dbo].[Viajes] CHECK CONSTRAINT [Viajes_patente_FK]
+GO
+/****** Object:  ForeignKey [Viajes_planificacion_fk]    Script Date: 11/05/2016 19:20:03 ******/
+ALTER TABLE [dbo].[Viajes]  WITH CHECK ADD  CONSTRAINT [Viajes_planificacion_fk] FOREIGN KEY([planificacion])
+REFERENCES [dbo].[Planificacion] ([id])
+GO
+ALTER TABLE [dbo].[Viajes] CHECK CONSTRAINT [Viajes_planificacion_fk]
+GO
+
